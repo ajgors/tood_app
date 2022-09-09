@@ -4,11 +4,13 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class Dao {
-    protected static EntityManager entityManager = Persistence.createEntityManagerFactory("hibernate_first_app").createEntityManager();
+    protected static EntityManager entityManager = Persistence.createEntityManagerFactory("todo_app").createEntityManager();
 
     public static <T> void inTransaction(Consumer<T> consumer, T entity) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -21,6 +23,12 @@ public class Dao {
 
     public static void save(Object entity) {
         inTransaction(entityManager::persist, entity);
+    }
+
+    public static void saveAll(Object... entities) {
+        for (Object entity :entities) {
+            inTransaction(entityManager::persist, entity);
+        }
     }
 
     public static void update(Object entity) {

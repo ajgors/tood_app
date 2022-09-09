@@ -23,7 +23,7 @@ public class TaskCellController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         taskTitleLbl.setText(task.getTitle());
         delete_btn.setOnAction(e -> {
-            Database.removeTaskFromDB(task.getId());
+//            Database.removeTaskFromDB(task.getId());
             TasksController.tasks.removeIf(i -> i.getId() == task.getId());
         });
     }

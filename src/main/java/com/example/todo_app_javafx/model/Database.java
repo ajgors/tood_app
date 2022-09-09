@@ -120,8 +120,8 @@ public class Database {
             ResultSet resultSet = statement.executeQuery(sqlSelectTaks);
             ObservableList<Task> tasks =FXCollections.observableArrayList();
             while (resultSet.next()) {
-                Task newTask = new Task(resultSet.getInt("id"), resultSet.getString("title"));
-                tasks.add(newTask);
+//                Task newTask = new Task(resultSet.getInt("id"), resultSet.getString("title"));
+//                tasks.add(newTask);
             }
             return tasks;
         } catch (SQLException e) {

@@ -1,21 +1,42 @@
 package com.example.todo_app_javafx.model;
 
-public class Task {
-    private int id;
-    private String title;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
-    public Task(int id, String title) {
-        this.id = id;
+import java.util.Date;
+
+@Getter
+@Setter
+@Entity
+@ToString
+
+public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+    private String title;
+    private String description;
+    private int done;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate;
+    private String priority;
+
+
+
+
+    public Task(String title) {
         this.title = title;
     }
 
-    public int getId() {
-        return id;
-    }
+    public Task() {
 
-    public String getTitle() {
-        return title;
     }
-
 
 }

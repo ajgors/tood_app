@@ -55,7 +55,7 @@ public class TasksController implements Initializable {
             return;
         } else {
             int id = Database.addNewTaskToDatabase(List.of(newTaskTitleFld.getText()));
-            tasks.add(new Task(id, newTaskTitleFld.getText()));
+//            tasks.add(new Task(id, newTaskTitleFld.getText()));
         }
         newTaskTitleFld.clear();
     }
