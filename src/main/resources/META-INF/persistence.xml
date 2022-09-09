@@ -6,15 +6,15 @@
              version="2.1">
     <persistence-unit name="todo_app">
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/todo_app" />
-            <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="Grupa03!" />
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.schema-generation.database.action"
-                      value="drop-and-create" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/todo_app" />
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="Grupa03!" />
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+<!--            <property name="javax.persistence.schema-generation.database.action"-->
+<!--                      value="" />-->
 
             <property name="hibernate.hbm2ddl.auto" value="update" />
-            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.show_sql" value="false" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.connection.useUnicode" value="true" />
             <property name="hibernate.connection.characterEncoding"

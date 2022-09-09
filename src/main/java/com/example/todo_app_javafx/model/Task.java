@@ -29,8 +29,6 @@ public class Task {
     private String priority;
 
 
-
-
     public Task(String title) {
         this.title = title;
     }

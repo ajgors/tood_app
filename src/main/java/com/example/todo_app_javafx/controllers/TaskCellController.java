@@ -24,7 +24,7 @@ public class TaskCellController implements Initializable {
         taskTitleLbl.setText(task.getTitle());
         delete_btn.setOnAction(e -> {
 //            Database.removeTaskFromDB(task.getId());
-            TasksController.tasks.removeIf(i -> i.getId() == task.getId());
+//            TasksController.tasks.removeIf(i -> i.getId() == task.getId());
         });
     }
 }

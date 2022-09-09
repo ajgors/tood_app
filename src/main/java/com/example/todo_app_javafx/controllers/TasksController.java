@@ -27,7 +27,7 @@ public class TasksController implements Initializable {
     private Button logOutBtn;
     @FXML
     private Button deleteAccountBtn;
-    public static ObservableList<Task> tasks = Database.getUserTasks();
+//    public static ObservableList<Task> tasks = Database.getUserTasks();
 
 
     @Override
@@ -36,11 +36,11 @@ public class TasksController implements Initializable {
         logOutBtn.setOnAction(e -> logOut());
 
         tasksListView.setCellFactory(e -> new TaskCellFactory());
-        tasksListView.getItems().addAll(tasks);
-        tasks.addListener((ListChangeListener<Task>) change -> {
-            tasksListView.getItems().clear();
-            tasksListView.getItems().addAll(tasks);
-        });
+//        tasksListView.getItems().addAll(tasks);
+//        tasks.addListener((ListChangeListener<Task>) change -> {
+//            tasksListView.getItems().clear();
+//            tasksListView.getItems().addAll(tasks);
+//        });
         addTaskBtn.setOnAction(e -> createNewTask());
     }
 

@@ -1,5 +1,6 @@
 package com.example.todo_app_javafx.controllers;
 
+import com.example.todo_app_javafx.dao.UserDao;
 import com.example.todo_app_javafx.model.Database;
 import com.example.todo_app_javafx.view.ViewFactory;
 import javafx.fxml.FXML;
@@ -37,7 +38,7 @@ public class LoginController implements Initializable {
         String userTypedLoginOrEmail = loginEmailFld.getText();
         String userTypedPassword = passwordFld.getText();
 
-        if (Database.loginUser(userTypedLoginOrEmail, userTypedPassword, userTypedLoginOrEmail)) {
+        if (UserDao.login(userTypedLoginOrEmail, userTypedPassword) != null) {
             ViewFactory.getTasksWindow();
             closeCurrentStage();
         } else {
@@ -46,7 +47,7 @@ public class LoginController implements Initializable {
         }
     }
 
-    private void closeCurrentStage(){
+    private void closeCurrentStage() {
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         stage.close();
     }

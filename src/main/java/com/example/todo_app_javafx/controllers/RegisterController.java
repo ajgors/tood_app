@@ -1,6 +1,9 @@
 package com.example.todo_app_javafx.controllers;
 
+import com.example.todo_app_javafx.dao.Dao;
+import com.example.todo_app_javafx.dao.UserDao;
 import com.example.todo_app_javafx.model.Database;
+import com.example.todo_app_javafx.model.User;
 import com.example.todo_app_javafx.view.ViewFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,13 +40,13 @@ public class RegisterController implements Initializable {
     }
 
     private void userCreation(){
-        if (Database.checkIfUserExists(loginFld.getText())) {
-            loginExistsAlert();
-        } else {
-            Database.createUser(nameFld.getText(), loginFld.getText(),
-                    surnameFld.getText(), passwordFld.getText(), emailFld.getText());
-            root.getChildren().setAll(ViewFactory.getLoginView());
-        }
+            if(UserDao.loadByLogin(loginFld.getText()) == null){
+                User user = new User(nameFld.getText(), surnameFld.getText(), loginFld.getText(), passwordFld.getText(), emailFld.getText());
+                Dao.save(user);
+                root.getChildren().setAll(ViewFactory.getLoginView());
+            }else{
+                loginExistsAlert();
+            }
     }
 
     private void loginExistsAlert(){

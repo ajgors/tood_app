@@ -1,5 +1,6 @@
 package com.example.todo_app_javafx.dao;
 
+import com.example.todo_app_javafx.model.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
@@ -9,8 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static com.example.todo_app_javafx.Main.entityManager;
+
 public class Dao {
-    protected static EntityManager entityManager = Persistence.createEntityManagerFactory("todo_app").createEntityManager();
 
     public static <T> void inTransaction(Consumer<T> consumer, T entity) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -51,5 +53,6 @@ public class Dao {
                 createQuery("from " + clazz.getSimpleName(),
                         clazz).getResultList();
     }
+
 
 }
