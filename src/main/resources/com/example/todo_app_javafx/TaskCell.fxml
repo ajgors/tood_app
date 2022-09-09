@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="600.0" prefWidth="300.0" styleClass="cell_container" stylesheets="@TaskCell.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <HBox alignment="CENTER_LEFT" layoutX="92.0" layoutY="-25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="5.0">
+      <Label fx:id="taskTitleLbl" maxWidth="500.0" minHeight="30.0" text="234" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+   </HBox>
+   <VBox alignment="CENTER" layoutX="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Button fx:id="delete_btn" mnemonicParsing="false" text="Delete">
+
+   </Button>
+      </children>
+   </VBox>
+</AnchorPane>

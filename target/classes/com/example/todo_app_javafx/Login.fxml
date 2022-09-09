@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.todo_app_javafx.controllers.LoginController">
+    <VBox alignment="TOP_CENTER" fillWidth="false" layoutX="50.0" layoutY="14.0" prefHeight="300.0" prefWidth="200.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login in">
+            <VBox.margin>
+                <Insets bottom="25.0" top="20.0" />
+            </VBox.margin>
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login or Email">
+            <font>
+                <Font size="14.0" />
+            </font>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+        </Text>
+        <TextField fx:id="loginEmailFld" promptText="Login or email" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+            <font>
+                <Font size="14.0" />
+            </font>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+        </Text>
+      <PasswordField fx:id="passwordFld" promptText="Password" />
+        <Button fx:id="loginBtn" mnemonicParsing="false" text="Login in">
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+        </Button>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You don't have a account? Create new one">
+         <VBox.margin>
+            <Insets top="40.0" />
+         </VBox.margin></Text>
+      <Button fx:id="createNewAccountBtn" mnemonicParsing="false" text="Create Account" />
+    </VBox>
+</AnchorPane>
