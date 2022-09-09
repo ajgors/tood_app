@@ -1,11 +1,11 @@
 package com.example.todo_app_javafx.controllers;
 
 import com.example.todo_app_javafx.dao.Dao;
-import com.example.todo_app_javafx.dao.TaskDao;
 import com.example.todo_app_javafx.dao.UserDao;
 import com.example.todo_app_javafx.model.*;
 import com.example.todo_app_javafx.view.TaskCellFactory;
 import com.example.todo_app_javafx.view.ViewFactory;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,36 +29,38 @@ public class TasksController implements Initializable {
     private Button logOutBtn;
     @FXML
     private Button deleteAccountBtn;
-    public static List<Task> tasks;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         deleteAccountBtn.setOnAction(e -> ViewFactory.openDeleteAccountStage());
         logOutBtn.setOnAction(e -> logOut());
         tasksListView.setCellFactory(e -> new TaskCellFactory());
-        System.out.println(tasks);
-        tasksListView.getItems().addAll(tasks);
-//        tasks.addListener((ListChangeListener<Task>) change -> {
-//            tasksListView.getItems().clear();
-//            tasksListView.getItems().addAll(tasks);
-//        });
-//        addTaskBtn.setOnAction(e -> createNewTask());
+        tasksListView.getItems().addAll(Model.getInstance().getTasks());
+        Model.getInstance().getTasks().addListener((ListChangeListener<Task>) change -> {
+            tasksListView.getItems().clear();
+            tasksListView.getItems().addAll(Model.getInstance().getTasks());
+        });
+        addTaskBtn.setOnAction(e -> createNewTask());
     }
 
     private void logOut() {
+        tasksListView.getItems().clear();
+        Model.getInstance().getTasks().clear();
+        Model.getInstance().setUser(null);
         Stage stage = (Stage) deleteAccountBtn.getScene().getWindow();
         stage.close();
         ViewFactory.openLoginStage();
     }
 
-//    private void createNewTask() {
-//        if (newTaskTitleFld.getText().isEmpty()) {
-//            return;
-//        } else {
-//            int id = Database.addNewTaskToDatabase(List.of(newTaskTitleFld.getText()));
-////            tasks.add(new Task(id, newTaskTitleFld.getText()));
-//        }
-//        newTaskTitleFld.clear();
-//    }
+    private void createNewTask() {
+        if (newTaskTitleFld.getText().isEmpty()) {
+            return;
+        } else {
+            Task newTask = new Task(newTaskTitleFld.getText(), Model.getInstance().getUser());
+            Dao.save(newTask);
+            tasksListView.getItems().add(newTask);
+        }
+        newTaskTitleFld.clear();
+    }
 
 }

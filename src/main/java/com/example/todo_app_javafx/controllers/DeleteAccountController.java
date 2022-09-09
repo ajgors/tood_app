@@ -1,6 +1,5 @@
 package com.example.todo_app_javafx.controllers;
 
-import com.example.todo_app_javafx.model.Database;
 import com.example.todo_app_javafx.view.ViewFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,8 +25,8 @@ public class DeleteAccountController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loginLbl.setText("Account login: " + Database.loggedUser.getLogin());
-        deleteAccountBtn.setOnAction(e -> removeAccount());
+//        loginLbl.setText("Account login: " + Database.loggedUser.getLogin());
+//        deleteAccountBtn.setOnAction(e -> removeAccount());
     }
 
     private void closeDeleteAccountWindow(){
@@ -41,15 +40,15 @@ public class DeleteAccountController implements Initializable {
         ViewFactory.openLoginStage();
     }
 
-    private void removeAccount(){
-        if (passwordFld.getText().equals(repeatedPasswordFld.getText())
-                && Database.checkIfPassowrdIsCorrect(passwordFld.getText())) {
-
-            Database.deleteCurrentLoggedUser();
-            closeDeleteAccountWindow();
-            closeTasksWindow();
-        }
-    }
+//    private void removeAccount(){
+//        if (passwordFld.getText().equals(repeatedPasswordFld.getText()){
+////                && Database.checkIfPassowrdIsCorrect(passwordFld.getText())) {
+//
+////            Database.deleteCurrentLoggedUser();
+//            closeDeleteAccountWindow();
+//            closeTasksWindow();
+//        }
+//    }
 
 
 

@@ -1,9 +1,13 @@
 package com.example.todo_app_javafx.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Model {
 
-    private Long LogedUserId;
+    private User user;
     private static Model instance;
+    private ObservableList<Task> tasks = FXCollections.observableArrayList();
 
     public synchronized static Model getInstance(){
         if(instance == null){
@@ -13,11 +17,15 @@ public class Model {
     }
     private Model(){}
 
-    public Long getLogedUserId() {
-        return LogedUserId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setLogedUserId(Long logedUserId) {
-        LogedUserId = logedUserId;
+    public User getUser() {
+        return user;
+    }
+
+    public ObservableList<Task> getTasks() {
+        return tasks;
     }
 }

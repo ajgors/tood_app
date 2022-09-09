@@ -2,7 +2,6 @@ package com.example.todo_app_javafx.controllers;
 
 import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.dao.UserDao;
-import com.example.todo_app_javafx.model.Database;
 import com.example.todo_app_javafx.model.User;
 import com.example.todo_app_javafx.view.ViewFactory;
 import javafx.fxml.FXML;
