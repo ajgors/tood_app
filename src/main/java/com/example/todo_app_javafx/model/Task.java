@@ -28,7 +28,7 @@ public class Task {
     private Date createDate;
     private String priority;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
 

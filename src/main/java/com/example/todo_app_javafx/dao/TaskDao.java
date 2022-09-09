@@ -1,11 +1,8 @@
 package com.example.todo_app_javafx.dao;
 
 import com.example.todo_app_javafx.model.Task;
-import com.example.todo_app_javafx.model.User;
 import jakarta.persistence.EntityTransaction;
-
 import java.util.List;
-import java.util.function.Consumer;
 
 import static com.example.todo_app_javafx.Main.entityManager;
 

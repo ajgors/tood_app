@@ -39,11 +39,9 @@ public class LoginController implements Initializable {
         String userTypedPassword = passwordFld.getText();
 
         if (UserDao.login(userTypedLoginOrEmail, userTypedPassword) != null) {
-            UserDao.login(userTypedLoginOrEmail, userTypedPassword).getTasks().forEach(task -> Model.getInstance().getTasks().add(task));
-//            Model.getInstance().getTasks().addAll(UserDao.login(userTypedLoginOrEmail, userTypedPassword).getTasks());
-            ViewFactory.getTasksWindow();
+            Model.getInstance().getTasks().addAll(Model.getInstance().getUser().getTasks());
             Model.getInstance().setUser(UserDao.login(userTypedLoginOrEmail, userTypedPassword));
-            System.out.println(Model.getInstance().getTasks());
+            ViewFactory.getTasksWindow();
             closeCurrentStage();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

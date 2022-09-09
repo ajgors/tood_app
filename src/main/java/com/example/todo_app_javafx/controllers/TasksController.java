@@ -1,21 +1,16 @@
 package com.example.todo_app_javafx.controllers;
 
 import com.example.todo_app_javafx.dao.Dao;
-import com.example.todo_app_javafx.dao.UserDao;
 import com.example.todo_app_javafx.model.*;
 import com.example.todo_app_javafx.view.TaskCellFactory;
 import com.example.todo_app_javafx.view.ViewFactory;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class TasksController implements Initializable {
@@ -58,6 +53,7 @@ public class TasksController implements Initializable {
         } else {
             Task newTask = new Task(newTaskTitleFld.getText(), Model.getInstance().getUser());
             Dao.save(newTask);
+            Model.getInstance().getUser().getTasks().add(newTask);
             tasksListView.getItems().add(newTask);
         }
         newTaskTitleFld.clear();

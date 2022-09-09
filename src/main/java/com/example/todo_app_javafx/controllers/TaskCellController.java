@@ -28,6 +28,7 @@ public class TaskCellController implements Initializable {
         delete_btn.setOnAction(e -> {
             TaskDao.deleteById(task.getId());
             Model.getInstance().getTasks().removeIf(i -> Objects.equals(i.getId(), task.getId()));
+            Model.getInstance().getUser().getTasks().removeIf(i -> Objects.equals(i.getId(), task.getId()));
         });
     }
 }

@@ -16,7 +16,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="hibernate_first_app" />
-          <factory-entry name="todo_app" />
+          <factory-entry name="todo_app" value="2ff76ae6-68a6-4536-aa79-168220e8483f" />
           <factory-entry name="todo_app_javafx" />
         </datasource-mapping>
         <naming-strategy-map />
@@ -81,7 +81,5 @@
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.19.4" level="project" />
     <orderEntry type="library" name="Maven: org.mindrot:jbcrypt:0.4" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.24" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate.orm:hibernate-core:6.1.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate.orm:hibernate-core:6.1.1.Final" level="project" />
   </component>
 </module>

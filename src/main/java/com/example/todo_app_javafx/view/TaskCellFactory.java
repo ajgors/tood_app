@@ -24,20 +24,6 @@ public class TaskCellFactory extends ListCell<Task> {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-//            Button button = new Button("X");
-//            Text text = new Text(task.getTitle());
-//            Text id = new Text(String.valueOf(task.getId()));
-//            id.setVisible(false);
-//            HBox hbox = new HBox(0,id,text);
-//            AnchorPane root = new AnchorPane(hbox,button);
-//            AnchorPane.setLeftAnchor(hbox, 0.0);
-//
-//            AnchorPane.setRightAnchor(button, 10.0);
-//            button.setOnAction(e -> {
-//                Database.removeTaskFromDB(task.getId());
-//                TasksController.tasks.removeIf(i-> i.getId() == task.getId());
-//            });
-
         }
     }
 

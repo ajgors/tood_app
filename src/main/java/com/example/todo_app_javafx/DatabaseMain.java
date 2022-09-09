@@ -17,10 +17,7 @@ public class DatabaseMain {
         user.getTasks().add(task2);
         user.getTasks().add(task3);
         Dao.save(user);
-//        System.out.println(Dao.loadByLogin("ajgor"));
 
-//        Dao.saveAll(task1,task2,task3);
-//        Dao.delete(user);
     }
 
 }
