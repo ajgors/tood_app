@@ -3,6 +3,7 @@ module com.example.todo_app_javafx {
     requires javafx.fxml;
     requires java.sql;
     requires jbcrypt;
+    requires jakarta.persistence;
 
 
     opens com.example.todo_app_javafx to javafx.fxml;
