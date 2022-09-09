@@ -23,8 +23,7 @@ public class User {
     private String password;
     private String email;
 
-    @OneToMany
-    @JoinColumn(name = "user_id")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
 
     public User(String name, String surname, String login, String password, String email) {

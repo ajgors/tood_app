@@ -49,6 +49,7 @@ public class Dao {
     }
 
     public static <T> List<T> loadAll(Class<T> clazz) {
+
         return entityManager.
                 createQuery("from " + clazz.getSimpleName(),
                         clazz).getResultList();

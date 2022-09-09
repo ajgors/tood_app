@@ -28,9 +28,13 @@ public class Task {
     private Date createDate;
     private String priority;
 
+    @ManyToOne
+    private User user;
 
-    public Task(String title) {
+
+    public Task(String title, User user) {
         this.title = title;
+        this.user = user;
     }
 
     public Task() {

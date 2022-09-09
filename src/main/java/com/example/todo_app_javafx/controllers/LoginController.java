@@ -1,7 +1,7 @@
 package com.example.todo_app_javafx.controllers;
 
 import com.example.todo_app_javafx.dao.UserDao;
-import com.example.todo_app_javafx.model.Database;
+import com.example.todo_app_javafx.model.Model;
 import com.example.todo_app_javafx.view.ViewFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,7 +39,9 @@ public class LoginController implements Initializable {
         String userTypedPassword = passwordFld.getText();
 
         if (UserDao.login(userTypedLoginOrEmail, userTypedPassword) != null) {
+            TasksController.tasks = UserDao.login(userTypedLoginOrEmail, userTypedPassword).getTasks();
             ViewFactory.getTasksWindow();
+            Model.getInstance().setLogedUserId(UserDao.login(userTypedLoginOrEmail, userTypedPassword).getId());
             closeCurrentStage();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -11,7 +11,7 @@
             <property name="jakarta.persistence.jdbc.password" value="Grupa03!" />
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 <!--            <property name="javax.persistence.schema-generation.database.action"-->
-<!--                      value="" />-->
+<!--                      value="drop-and-create" />-->
 
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="false" />
