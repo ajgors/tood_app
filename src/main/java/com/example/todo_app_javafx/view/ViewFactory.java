@@ -1,10 +1,16 @@
 package com.example.todo_app_javafx.view;
 
+import com.example.todo_app_javafx.controllers.EditController;
+import com.example.todo_app_javafx.controllers.SubTaskCellController;
 import com.example.todo_app_javafx.controllers.TasksController;
 import com.example.todo_app_javafx.Main;
+import com.example.todo_app_javafx.model.Subtask;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,40 +21,30 @@ public class ViewFactory {
     private ViewFactory(){}
 
     public static void getTasksWindow() {
-        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Tasks.fxml"));
-        createStage(stage, fxmlLoader);
+        createStage(fxmlLoader);
     }
 
 
     public static void openLoginStage() {
-        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
-        Scene scene;
-        try {
-            scene = new Scene(fxmlLoader.load());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        stage.setScene(scene);
-        stage.show();
+        createStage(fxmlLoader);
     }
 
     public static void openDeleteAccountStage() {
-        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DeleteAccount.fxml"));
-        createStage(stage, fxmlLoader);
+        createStage(fxmlLoader);
     }
 
-    private static void createStage(Stage stage, FXMLLoader fxmlLoader) {
+    private static void createStage(FXMLLoader fxmlLoader) {
+        Stage stage = new Stage();
         Scene scene;
         try {
             scene = new Scene(fxmlLoader.load());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        TasksController tasksController = new TasksController();
-        fxmlLoader.setController(tasksController);
+
         stage.setScene(scene);
         stage.show();
     }
@@ -67,5 +63,40 @@ public class ViewFactory {
             throw new RuntimeException(e);
         }
     }
-
+    public static void openEditWindow(Subtask subtask, SubTaskCellController subTaskCellController) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Edit.fxml"));
+        try {
+            EditController editController = new EditController(subtask, subTaskCellController);
+            fxmlLoader.setController(editController);
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setAlwaysOnTop(true);
+//            stage.initModality(Modality.WINDOW_MODAL);
+//            stage.initOwner();
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException("Error while opening new Window");
+        }
+    }
+    public static void openNewTaskWindow() {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NetTask.fxml"));
+        try {
+//            EditController editController = new EditController(subtask, subTaskCellController);
+//            fxmlLoader.setController(editController);
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setAlwaysOnTop(true);
+//            stage.initModality(Modality.WINDOW_MODAL);
+//            stage.initOwner();
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException("Error while opening new Window");
+        }
+    }
 }

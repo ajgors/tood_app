@@ -30,10 +30,10 @@ public class Task {
     private Date createDate;
     private String priority;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     @ToString.Exclude
     private List<Subtask> subtasks = new ArrayList<>();
 

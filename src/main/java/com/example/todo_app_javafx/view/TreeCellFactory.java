@@ -17,6 +17,7 @@ public class TreeCellFactory extends TreeCell<Object> {
             setGraphic(null);
             setContextMenu(null);
         } else {
+
             if (item instanceof Task task) {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("TaskCell.fxml"));
                 TaskCellController controller = new TaskCellController(task , getTreeView());

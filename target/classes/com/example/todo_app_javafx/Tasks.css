@@ -4,41 +4,37 @@
 
 .myTree .tree-cell {
     -fx-background-color: #EEE ;
-    -fx-text-fill: #ffffff ;
+    -fx-text-fill: white;
 }
 .myTree{
     -fx-background-color: #EEE ;
-}
-
-.listview {
-    -fx-background-color: transparent;
-    -fx-border-width: 0 0 0 0;
-    -fx-border-color: #AAAAAA;
-    -fx-padding: 3px ;
-
 }
 
 .transaction_listview .scroll-bar:vertical {
     -fx-scale-x: 0;
 }
 
-.list-cell .tree-cell{
+.tree-cell{
     -fx-padding: 5 0 5 0;
     -fx-background-color: transparent;
-
-    /*-fx-border-width: 1px;*/
-    /*-fx-border-color: #444;*/
-    /*-fx-background-color: #999, -fx-background ;*/
-    /*-fx-spacing: 20;*/
     -fx-border-radius: 2;
     -fx-background-insets: 0 2px;
 
 }
-.list-cell:empty .tree-cell:empty {
+.tree-cell:empty {
     -fx-padding: 2px ;
     -fx-background-color: transparent ;
     -fx-background-insets: 0 ;
     -fx-border-width: 0;
 }
 
-
+.tree-cell .tree-disclosure-node .arrow {
+    -fx-translate-y: 6;
+    -fx-translate-x: -6;
+    -fx-background-color: black;
+}
+.tree-cell:expanded .tree-disclosure-node .arrow {
+    -fx-translate-y: 6;
+    -fx-translate-x: -6;
+    -fx-background-color: black;
+}

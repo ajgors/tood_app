@@ -33,9 +33,6 @@ public class Dao {
         inTransaction(entityManager::remove, entity);
     }
 
-//    PersonDao -> Person  loadById(1)
-//    Dao -> Person.class  loadBy
-
     public static <T> T loadById(Class<T> clazz, Long id) {
         return entityManager.find(clazz, id);
     }
