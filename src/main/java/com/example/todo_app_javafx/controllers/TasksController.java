@@ -28,14 +28,9 @@ public class TasksController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        addTaskBtn.setOnAction(e-> ViewFactory.openNewTaskWindow());
+        addTaskBtn.setOnAction(e-> ViewFactory.openNewTaskWindow(treeView));
         deleteAccountBtn.setOnAction(e -> ViewFactory.openDeleteAccountStage());
         logOutBtn.setOnAction(e -> logOut());
-//        addTaskBtn.setOnAction(e -> {
-//            treeView.getRoot().getChildren().clear();
-//            createNewTask();
-//            showTasks();
-//        });
         tasks.setExpanded(true);
         showTasks();
         treeView.setRoot(tasks);
@@ -45,6 +40,7 @@ public class TasksController implements Initializable {
     }
 
     public static void showTasks() {
+
         for (Task task : Model.getInstance().getUser().getTasks()) {
             TreeItem<Object> taskItem = new TreeItem<>(task);
             for (Subtask subtask : task.getSubtasks()) {

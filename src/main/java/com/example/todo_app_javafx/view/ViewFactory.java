@@ -1,6 +1,7 @@
 package com.example.todo_app_javafx.view;
 
 import com.example.todo_app_javafx.controllers.EditController;
+import com.example.todo_app_javafx.controllers.NewTaskController;
 import com.example.todo_app_javafx.controllers.SubTaskCellController;
 import com.example.todo_app_javafx.controllers.TasksController;
 import com.example.todo_app_javafx.Main;
@@ -8,6 +9,7 @@ import com.example.todo_app_javafx.model.Subtask;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -81,11 +83,11 @@ public class ViewFactory {
             throw new RuntimeException("Error while opening new Window");
         }
     }
-    public static void openNewTaskWindow() {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NetTask.fxml"));
+    public static void openNewTaskWindow(TreeView<Object> treeView) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NewTask.fxml"));
         try {
-//            EditController editController = new EditController(subtask, subTaskCellController);
-//            fxmlLoader.setController(editController);
+            NewTaskController newTaskController = new NewTaskController(treeView);
+            fxmlLoader.setController(newTaskController);
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
