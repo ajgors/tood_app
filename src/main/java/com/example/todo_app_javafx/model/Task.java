@@ -33,10 +33,11 @@ public class Task {
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "task_id")
-    private List<Subtask> subtask =
-            new ArrayList<>();
+    @ToString.Exclude
+    private List<Subtask> subtask
+            = new ArrayList<>();
 
 
     public Task(String title, User user) {
@@ -52,16 +53,4 @@ public class Task {
         this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", done=" + done +
-                ", createDate=" + createDate +
-                ", priority='" + priority + '\'' +
-                ", user=" + user +
-                '}';
-    }
 }

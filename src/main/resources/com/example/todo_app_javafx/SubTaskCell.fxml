@@ -13,7 +13,6 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Button mnemonicParsing="false" text="add subtask" />
    </HBox>
    <VBox alignment="CENTER" layoutX="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
       <children>

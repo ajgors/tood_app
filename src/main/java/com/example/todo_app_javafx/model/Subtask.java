@@ -1,7 +1,6 @@
 package com.example.todo_app_javafx.model;
 
 import jakarta.persistence.*;
-import javafx.scene.control.TreeItem;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "subtask")
-public class Subtask extends TreeItem<Object> {
+public class Subtask  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
