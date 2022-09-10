@@ -40,10 +40,6 @@ public class LoginController implements Initializable {
 
         if (UserDao.login(userTypedLoginOrEmail, userTypedPassword) != null) {
             Model.getInstance().setUser(UserDao.login(userTypedLoginOrEmail, userTypedPassword));
-            Model.getInstance().getTasks().addAll(Model.getInstance().getUser().getTasks());
-            Model.getInstance().getTasks().forEach(task -> {
-                Model.getInstance().getSubtasks().add(task.getSubtask());
-            });
             ViewFactory.getTasksWindow();
             closeCurrentStage();
         } else {

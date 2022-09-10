@@ -4,7 +4,6 @@ import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.model.*;
 import com.example.todo_app_javafx.view.TreeCellFactory;
 import com.example.todo_app_javafx.view.ViewFactory;
-import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -14,9 +13,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TasksController implements Initializable {
-    public TreeView<Object> treeView;
     @FXML
-    private ListView<Task> tasksListView;
+    private TreeView<Object> treeView;
     @FXML
     private TextField newTaskTitleFld;
     @FXML
@@ -26,20 +24,17 @@ public class TasksController implements Initializable {
     @FXML
     private Button deleteAccountBtn;
 
-    private static TreeItem<Object> tasks = new TreeItem<>(null);
+    private static final TreeItem<Object> tasks = new TreeItem<>(null);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         deleteAccountBtn.setOnAction(e -> ViewFactory.openDeleteAccountStage());
         logOutBtn.setOnAction(e -> logOut());
-
-
-        Model.getInstance().getTasks().addListener((ListChangeListener<Task>) change -> {
+        addTaskBtn.setOnAction(e -> {
             treeView.getRoot().getChildren().clear();
+            createNewTask();
             showTasks();
         });
-        addTaskBtn.setOnAction(e -> createNewTask());
-
 
         tasks.setExpanded(true);
         showTasks();
@@ -50,10 +45,9 @@ public class TasksController implements Initializable {
     }
 
     public static void showTasks() {
-        for (Task task : Model.getInstance().getTasks()) {
-
+        for (Task task : Model.getInstance().getUser().getTasks()) {
             TreeItem<Object> taskItem = new TreeItem<>(task);
-            for (Subtask subtask : task.getSubtask()) {
+            for (Subtask subtask : task.getSubtasks()) {
                 taskItem.getChildren().add(new TreeItem<>(subtask));
             }
             tasks.getChildren().add(taskItem);
@@ -62,8 +56,7 @@ public class TasksController implements Initializable {
     }
 
     private void logOut() {
-        tasksListView.getItems().clear();
-        Model.getInstance().getTasks().clear();
+        treeView.getRoot().getChildren().clear();
         Model.getInstance().setUser(null);
         Stage stage = (Stage) deleteAccountBtn.getScene().getWindow();
         stage.close();
@@ -76,7 +69,6 @@ public class TasksController implements Initializable {
         } else {
             Task newTask = new Task(newTaskTitleFld.getText(), Model.getInstance().getUser());
             Dao.save(newTask);
-            Model.getInstance().getTasks().add(newTask);
             Model.getInstance().getUser().getTasks().add(newTask);
         }
         newTaskTitleFld.clear();

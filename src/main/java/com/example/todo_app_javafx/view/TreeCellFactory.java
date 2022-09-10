@@ -17,10 +17,9 @@ public class TreeCellFactory extends TreeCell<Object> {
             setGraphic(null);
             setContextMenu(null);
         } else {
-
             if (item instanceof Task task) {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("TaskCell.fxml"));
-                TaskCellController controller = new TaskCellController(task);
+                TaskCellController controller = new TaskCellController(task , getTreeView());
                 loader.setController(controller);
                 try {
                     setGraphic(loader.load());
@@ -29,7 +28,7 @@ public class TreeCellFactory extends TreeCell<Object> {
                 }
             }else if(item instanceof Subtask subtask){
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("SubTaskCell.fxml"));
-                SubTaskCellController controller = new SubTaskCellController(subtask);
+                SubTaskCellController controller = new SubTaskCellController(subtask, getTreeView());
                 loader.setController(controller);
                 try {
                     setGraphic(loader.load());

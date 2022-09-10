@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -32,11 +31,10 @@
             <Button fx:id="deleteAccountBtn" mnemonicParsing="false" text="Delete account" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutY="100.0" prefHeight="251.0" prefWidth="600.0" AnchorPane.bottomAnchor="249.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <HBox alignment="CENTER" layoutY="100.0" prefHeight="450.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <ListView fx:id="tasksListView" prefHeight="192.0" prefWidth="570.0" styleClass="listview" stylesheets="@Tasks.css" />
+            <TreeView fx:id="treeView" prefHeight="212.0" prefWidth="530.0" styleClass="myTree" />
          </children>
       </HBox>
-      <TreeView fx:id="treeView" layoutX="41.0" layoutY="93.0" prefHeight="430.0" prefWidth="530.0" styleClass="listview" />
     </children>
 </AnchorPane>

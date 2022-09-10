@@ -1,6 +1,15 @@
 
 
 /*List view and list cells*/
+
+.myTree .tree-cell {
+    -fx-background-color: #EEE ;
+    -fx-text-fill: #ffffff ;
+}
+.myTree{
+    -fx-background-color: #EEE ;
+}
+
 .listview {
     -fx-background-color: transparent;
     -fx-border-width: 0 0 0 0;

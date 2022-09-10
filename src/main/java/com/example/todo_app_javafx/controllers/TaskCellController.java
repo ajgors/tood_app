@@ -1,5 +1,6 @@
 package com.example.todo_app_javafx.controllers;
 
+import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.dao.TaskDao;
 import com.example.todo_app_javafx.model.Model;
 import com.example.todo_app_javafx.model.Subtask;
@@ -8,9 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class TaskCellController implements Initializable {
@@ -21,26 +22,29 @@ public class TaskCellController implements Initializable {
     @FXML
     private Button addSubtaskBtn;
     private final Task task;
+    private final TreeView<Object> treeView;
 
-    public TaskCellController(Task task) {
+    public TaskCellController(Task task, TreeView<Object> treeView) {
         this.task = task;
+        this.treeView = treeView;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         taskTitleLbl.setText(task.getTitle());
         delete_btn.setOnAction(e -> {
+            Model.getInstance().getUser().getTasks().remove(task);
+            treeView.getRoot().getChildren().removeIf(treeItem -> treeItem.getValue().equals(task));
             TaskDao.deleteById(task.getId());
-            Model.getInstance().getTasks().removeIf(i -> Objects.equals(i.getId(), task.getId()));
-            Model.getInstance().getUser().getTasks().removeIf(i -> Objects.equals(i.getId(), task.getId()));
         });
+
         addSubtaskBtn.setOnAction(e -> {
-            Model.getInstance().getTasks().forEach(t-> {
-                if(t.equals(task)){
-                    t.getSubtask().add(new Subtask("123"));
-                }
-            });
-//            Model.getInstance().getSubtasks().add();
+            TreeItem<Object> treeItem = treeView.getRoot().getChildren().filtered(i -> i.getValue().equals(task)).stream().findFirst().get();
+            Subtask newSubtask = new Subtask("", task);
+            treeItem.getChildren().add(new TreeItem<>(newSubtask));
+            task.getSubtasks().add(newSubtask);
+            Dao.save(newSubtask);
+
         });
     }
 }

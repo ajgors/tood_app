@@ -16,8 +16,13 @@ public class Subtask  {
 
     private String title;
 
-    public Subtask(String title) {
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
+
+    public Subtask(String title, Task task) {
         this.title = title;
+        this.task = task;
     }
     public Subtask(){}
 }

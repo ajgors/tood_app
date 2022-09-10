@@ -33,12 +33,9 @@ public class Task {
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
-    @OneToMany(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "task_id")
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     @ToString.Exclude
-    private List<Subtask> subtask
-            = new ArrayList<>();
-
+    private List<Subtask> subtasks = new ArrayList<>();
 
     public Task(String title, User user) {
         this.title = title;
@@ -47,10 +44,6 @@ public class Task {
 
     public Task() {
 
-    }
-
-    public Task(String title) {
-        this.title = title;
     }
 
 }
