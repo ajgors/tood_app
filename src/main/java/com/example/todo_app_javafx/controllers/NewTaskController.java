@@ -31,7 +31,8 @@ public class NewTaskController implements Initializable {
         if (titleFld.getText().isEmpty()) {
             return;
         } else {
-            Task newTask = new Task(titleFld.getText(), Model.getInstance().getUser());
+            String selectedPriority = ((ToggleButton)priority.getSelectedToggle()).getText();
+            Task newTask = new Task(titleFld.getText(), description.getText(), selectedPriority, Model.getInstance().getUser());
             Dao.save(newTask);
             Model.getInstance().getUser().getTasks().add(newTask);
             treeView.getRoot().getChildren().clear();

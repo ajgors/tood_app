@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,6 +30,8 @@ public class SubTaskCellController implements Initializable {
     @FXML
     private Button editBtn;
     private final Subtask subtask;
+    @FXML
+    private AnchorPane root;
     private final TreeView<Object> treeView;
 
     public SubTaskCellController(Subtask task, TreeView<Object> treeView) {
@@ -36,6 +40,9 @@ public class SubTaskCellController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        root.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            TasksController.description.set(subtask.getDescription());
+        });
         taskTitleLbl.setText(subtask.getTitle());
         delete_btn.setOnAction(e -> {
             TreeItem<Object> treeItem = treeView.getRoot().getChildren().filtered(i -> i.getValue().equals(subtask.getTask())).stream().findFirst().get();

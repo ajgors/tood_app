@@ -37,8 +37,10 @@ public class Task {
     @ToString.Exclude
     private List<Subtask> subtasks = new ArrayList<>();
 
-    public Task(String title, User user) {
+    public Task(String title,String description, String priority, User user) {
         this.title = title;
+        this.description = description;
+        this.priority = priority;
         this.user = user;
     }
 

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="600.0" prefWidth="300.0" styleClass="cell_container" stylesheets="@TaskCell.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="600.0" prefWidth="300.0" styleClass="cell_container" stylesheets="@TaskCell.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <HBox alignment="CENTER_LEFT" layoutX="92.0" layoutY="-25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="5.0">
       <Label fx:id="taskTitleLbl" maxWidth="500.0" minHeight="30.0" text="234" wrapText="true">
          <font>
