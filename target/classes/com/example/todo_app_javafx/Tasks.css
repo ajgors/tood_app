@@ -13,7 +13,7 @@
     -fx-scale-x: 0;
 }
 
-.list-cell {
+.list-cell .tree-cell{
     -fx-padding: 5 0 5 0;
     -fx-background-color: transparent;
 
@@ -25,7 +25,7 @@
     -fx-background-insets: 0 2px;
 
 }
-.list-cell:empty {
+.list-cell:empty .tree-cell:empty {
     -fx-padding: 2px ;
     -fx-background-color: transparent ;
     -fx-background-insets: 0 ;

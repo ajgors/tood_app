@@ -1,6 +1,7 @@
 package com.example.todo_app_javafx.dao;
 
 import jakarta.persistence.EntityTransaction;
+import java.util.List;
 import java.util.function.Consumer;
 
 import static com.example.todo_app_javafx.Main.entityManager;
@@ -31,5 +32,20 @@ public class Dao {
     public static void delete(Object entity) {
         inTransaction(entityManager::remove, entity);
     }
+
+//    PersonDao -> Person  loadById(1)
+//    Dao -> Person.class  loadBy
+
+    public static <T> T loadById(Class<T> clazz, Long id) {
+        return entityManager.find(clazz, id);
+    }
+
+    public static <T> List<T> loadAll(Class<T> clazz) {
+
+        return entityManager.
+                createQuery("from " + clazz.getSimpleName(),
+                        clazz).getResultList();
+    }
+
 
 }

@@ -6,7 +6,9 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,6 +33,11 @@ public class Task {
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
+    @OneToMany
+    @JoinColumn(name = "task_id")
+    private List<Subtask> subtask =
+            new ArrayList<>();
+
 
     public Task(String title, User user) {
         this.title = title;
@@ -41,4 +48,20 @@ public class Task {
 
     }
 
+    public Task(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", done=" + done +
+                ", createDate=" + createDate +
+                ", priority='" + priority + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }

@@ -27,4 +27,11 @@ public class TaskDao extends Dao {
                 .setParameter("userId", userId)
                 .getResultList();
     }
+    public static List<Task> loadAllSubTasks(Long taksId) {
+
+        return entityManager
+                .createQuery("from Subtask WHERE  = :taskId", Task.class)
+                .setParameter("taskId", taksId)
+                .getResultList();
+    }
 }

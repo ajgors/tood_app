@@ -5,6 +5,7 @@
 	  	http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
     <persistence-unit name="todo_app">
+        <class>com.example.todo_app_javafx.model.Subtask</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/todo_app" />
             <property name="jakarta.persistence.jdbc.user" value="root" />

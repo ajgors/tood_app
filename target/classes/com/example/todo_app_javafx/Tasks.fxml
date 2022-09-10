@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -31,10 +32,11 @@
             <Button fx:id="deleteAccountBtn" mnemonicParsing="false" text="Delete account" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="100.0" layoutY="156.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+      <HBox alignment="CENTER" layoutY="100.0" prefHeight="251.0" prefWidth="600.0" AnchorPane.bottomAnchor="249.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <ListView fx:id="tasksListView" prefHeight="365.0" prefWidth="570.0" styleClass="listview" stylesheets="@Tasks.css" />
+            <ListView fx:id="tasksListView" prefHeight="192.0" prefWidth="570.0" styleClass="listview" stylesheets="@Tasks.css" />
          </children>
       </HBox>
+      <TreeView fx:id="treeView" layoutX="41.0" layoutY="93.0" prefHeight="430.0" prefWidth="530.0" styleClass="listview" />
     </children>
 </AnchorPane>
