@@ -4,6 +4,7 @@ import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.model.Model;
 import com.example.todo_app_javafx.model.Subtask;
 import com.example.todo_app_javafx.model.Task;
+import com.example.todo_app_javafx.view.ViewFactory;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,11 +48,7 @@ public class TaskCellController implements Initializable {
         });
 
         addSubtaskBtn.setOnAction(e -> {
-            TreeItem<Object> treeItem = treeView.getRoot().getChildren().filtered(i -> i.getValue().equals(task)).stream().findFirst().get();
-            Subtask newSubtask = new Subtask("", task);
-            treeItem.getChildren().add(new TreeItem<>(newSubtask));
-            task.getSubtasks().add(newSubtask);
-            Dao.save(newSubtask);
+            ViewFactory.openNewSubTaskWindow(treeView,task);
 
         });
     }

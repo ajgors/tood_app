@@ -1,11 +1,9 @@
 package com.example.todo_app_javafx.view;
 
-import com.example.todo_app_javafx.controllers.EditController;
-import com.example.todo_app_javafx.controllers.NewTaskController;
-import com.example.todo_app_javafx.controllers.SubTaskCellController;
-import com.example.todo_app_javafx.controllers.TasksController;
+import com.example.todo_app_javafx.controllers.*;
 import com.example.todo_app_javafx.Main;
 import com.example.todo_app_javafx.model.Subtask;
+import com.example.todo_app_javafx.model.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -88,6 +86,27 @@ public class ViewFactory {
         try {
             NewTaskController newTaskController = new NewTaskController(treeView);
             fxmlLoader.setController(newTaskController);
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setAlwaysOnTop(true);
+//            stage.initModality(Modality.WINDOW_MODAL);
+//            stage.initOwner();
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException("Error while opening new Window");
+        }
+    }
+    public static void openNewSubTaskWindow(TreeView<Object> treeView, Task task) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NewTask.fxml"));
+        try {
+            NewSubTaskController controller = new NewSubTaskController(treeView,task);
+            fxmlLoader.setController(controller);
+
+//            NewTaskController newTaskController = new NewTaskController(treeView);
+//            fxmlLoader.setController(newTaskController);
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
