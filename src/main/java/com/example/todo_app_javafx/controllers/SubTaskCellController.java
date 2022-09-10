@@ -1,5 +1,6 @@
 package com.example.todo_app_javafx.controllers;
 
+import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.dao.TaskDao;
 import com.example.todo_app_javafx.model.Model;
 import com.example.todo_app_javafx.model.Subtask;
@@ -26,9 +27,6 @@ public class SubTaskCellController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         taskTitleLbl.setText(subtask.getTitle());
         delete_btn.setOnAction(e -> {
-            TaskDao.deleteById(subtask.getId());
-            Model.getInstance().getTasks().removeIf(i -> Objects.equals(i.getId(), subtask.getId()));
-            Model.getInstance().getUser().getTasks().removeIf(i -> Objects.equals(i.getId(), subtask.getId()));
         });
 
     }

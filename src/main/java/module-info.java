@@ -6,6 +6,7 @@ module com.example.todo_app_javafx {
     requires jakarta.persistence;
     requires lombok;
     requires org.hibernate.orm.core;
+    requires de.jensd.fx.glyphs.fontawesome;
 
 
 

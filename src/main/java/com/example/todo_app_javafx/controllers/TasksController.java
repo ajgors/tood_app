@@ -26,12 +26,14 @@ public class TasksController implements Initializable {
     @FXML
     private Button deleteAccountBtn;
 
-    private TreeItem<Object> tasks = new TreeItem<>(null);
+    private static TreeItem<Object> tasks = new TreeItem<>(null);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         deleteAccountBtn.setOnAction(e -> ViewFactory.openDeleteAccountStage());
         logOutBtn.setOnAction(e -> logOut());
+
+
         Model.getInstance().getTasks().addListener((ListChangeListener<Task>) change -> {
             treeView.getRoot().getChildren().clear();
             showTasks();
@@ -47,7 +49,7 @@ public class TasksController implements Initializable {
 
     }
 
-    private void showTasks() {
+    public static void showTasks() {
         for (Task task : Model.getInstance().getTasks()) {
 
             TreeItem<Object> taskItem = new TreeItem<>(task);

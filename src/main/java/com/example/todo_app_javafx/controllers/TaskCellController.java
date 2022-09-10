@@ -2,6 +2,7 @@ package com.example.todo_app_javafx.controllers;
 
 import com.example.todo_app_javafx.dao.TaskDao;
 import com.example.todo_app_javafx.model.Model;
+import com.example.todo_app_javafx.model.Subtask;
 import com.example.todo_app_javafx.model.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +18,8 @@ public class TaskCellController implements Initializable {
     private Label taskTitleLbl;
     @FXML
     private Button delete_btn;
+    @FXML
+    private Button addSubtaskBtn;
     private final Task task;
 
     public TaskCellController(Task task) {
@@ -30,6 +33,14 @@ public class TaskCellController implements Initializable {
             TaskDao.deleteById(task.getId());
             Model.getInstance().getTasks().removeIf(i -> Objects.equals(i.getId(), task.getId()));
             Model.getInstance().getUser().getTasks().removeIf(i -> Objects.equals(i.getId(), task.getId()));
+        });
+        addSubtaskBtn.setOnAction(e -> {
+            Model.getInstance().getTasks().forEach(t-> {
+                if(t.equals(task)){
+                    t.getSubtask().add(new Subtask("123"));
+                }
+            });
+//            Model.getInstance().getSubtasks().add();
         });
     }
 }
