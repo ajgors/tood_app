@@ -1,7 +1,6 @@
 package com.example.todo_app_javafx.controllers;
 
 import com.example.todo_app_javafx.dao.Dao;
-import com.example.todo_app_javafx.model.Model;
 import com.example.todo_app_javafx.model.Subtask;
 import com.example.todo_app_javafx.view.ViewFactory;
 import javafx.fxml.FXML;
@@ -40,8 +39,11 @@ public class SubTaskCellController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        root.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+//        treeView.setEventDispatcher((event, tail) -> null);
+
+        root.getChildren().get(0).addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
             TasksController.description.set(subtask.getDescription());
+            event.consume();
         });
         taskTitleLbl.setText(subtask.getTitle());
         delete_btn.setOnAction(e -> {
@@ -50,6 +52,6 @@ public class SubTaskCellController implements Initializable {
             subtask.getTask().getSubtasks().remove(subtask);
             Dao.delete(subtask);
         });
-        editBtn.setOnAction(e -> ViewFactory.openEditWindow(subtask, this));
+        editBtn.setOnAction(e -> ViewFactory.openSubtaskEditWindow(subtask, this));
     }
 }

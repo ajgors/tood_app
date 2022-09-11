@@ -22,12 +22,15 @@ public class Subtask  {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     private Date createDate;
+    private String priority;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Task task;
 
-    public Subtask(String title, Task task) {
+    public Subtask(String title,String description, String priority, Task task) {
         this.title = title;
+        this.description = description;
+        this.priority = priority;
         this.task = task;
     }
     public Subtask(){}

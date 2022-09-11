@@ -39,7 +39,7 @@ public class NewSubTaskController implements Initializable {
         if (titleFld.getText().isEmpty()) {
             return;
         } else {
-//            String selectedPriority = ((ToggleButton)priority.getSelectedToggle()).getText();
+            String selectedPriority = ((ToggleButton)priority.getSelectedToggle()).getText();
 //            Task newTask = new Task(titleFld.getText(), description.getText(), selectedPriority, Model.getInstance().getUser());
 //            Dao.save(newTask);
 //            Model.getInstance().getUser().getTasks().add(newTask);
@@ -47,7 +47,7 @@ public class NewSubTaskController implements Initializable {
 //            TasksController.showTasks();
 
             TreeItem<Object> treeItem = treeView.getRoot().getChildren().filtered(i -> i.getValue().equals(task)).stream().findFirst().get();
-            Subtask newSubtask = new Subtask("", task);
+            Subtask newSubtask = new Subtask(titleFld.getText(),description.getText(),selectedPriority, task);
             treeItem.getChildren().add(new TreeItem<>(newSubtask));
             task.getSubtasks().add(newSubtask);
             Dao.save(newSubtask);

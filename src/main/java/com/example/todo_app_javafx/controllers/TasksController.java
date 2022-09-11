@@ -47,6 +47,7 @@ public class TasksController implements Initializable {
         description.addListener((observable, oldValue, newValue) -> {
             descriptionArea.setText(newValue);
         });
+        treeView.setOnMouseClicked(null);
 
     }
 

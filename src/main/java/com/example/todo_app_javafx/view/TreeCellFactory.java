@@ -37,6 +37,13 @@ public class TreeCellFactory extends TreeCell<Object> {
                     e.printStackTrace();
                 }
             }
+            setCursor(null);
+            setCache(false);
+            setEditable(false);
+            setEffect(null);
+//            setMouseTransparent(true);
+            setOnMousePressed(null);
+            setFocusTraversable(false);
             setText(null);
 
         }

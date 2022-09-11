@@ -6,11 +6,8 @@ import com.example.todo_app_javafx.model.Subtask;
 import com.example.todo_app_javafx.model.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TreeView;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -63,10 +60,10 @@ public class ViewFactory {
             throw new RuntimeException(e);
         }
     }
-    public static void openEditWindow(Subtask subtask, SubTaskCellController subTaskCellController) {
+    public static void openSubtaskEditWindow(Subtask subtask, SubTaskCellController subTaskCellController) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Edit.fxml"));
         try {
-            EditController editController = new EditController(subtask, subTaskCellController);
+            EditSubtaskController editController = new EditSubtaskController(subtask, subTaskCellController);
             fxmlLoader.setController(editController);
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
@@ -81,6 +78,26 @@ public class ViewFactory {
             throw new RuntimeException("Error while opening new Window");
         }
     }
+
+    public static void openTaskEditWindow(Task task, TaskCellController taskCellController) {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Edit.fxml"));
+        try {
+            EditTaskController editController = new EditTaskController(task, taskCellController);
+            fxmlLoader.setController(editController);
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setAlwaysOnTop(true);
+//            stage.initModality(Modality.WINDOW_MODAL);
+//            stage.initOwner();
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException("Error while opening new Window");
+        }
+    }
+
     public static void openNewTaskWindow(TreeView<Object> treeView) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NewTask.fxml"));
         try {

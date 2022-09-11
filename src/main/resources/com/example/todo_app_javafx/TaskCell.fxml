@@ -14,13 +14,13 @@
             <Font size="14.0" />
          </font></Label>
    </HBox>
-   <HBox alignment="CENTER" fillHeight="false" spacing="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="6.0"
-         AnchorPane.topAnchor="0.0">
+   <HBox alignment="CENTER" fillHeight="false" spacing="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
       <Button fx:id="addSubtaskBtn" mnemonicParsing="false">
          <graphic>
-            <FontAwesomeIconView glyphName="PLUS"/>
+            <FontAwesomeIconView glyphName="PLUS" />
          </graphic>
       </Button>
+      <Button fx:id="editBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" text="edit" />
       <Button fx:id="delete_btn" mnemonicParsing="false" text="Delete">
 
       </Button>
