@@ -68,15 +68,6 @@ public class TasksController implements Initializable {
         ViewFactory.openLoginStage();
     }
 
-//    private void createNewTask() {
-//        if (newTaskTitleFld.getText().isEmpty()) {
-//            return;
-//        } else {
-//            Task newTask = new Task(newTaskTitleFld.getText(), Model.getInstance().getUser());
-//            Dao.save(newTask);
-//            Model.getInstance().getUser().getTasks().add(newTask);
-//        }
-//        newTaskTitleFld.clear();
-//    }
+
 
 }
