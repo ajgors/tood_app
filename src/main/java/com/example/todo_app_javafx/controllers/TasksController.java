@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class TasksController implements Initializable {
 
     @FXML
-    public TextArea descriptionArea;
+    private Label descriptionLbl;
     @FXML
     private TreeView<Object> treeView;
     @FXML
@@ -39,16 +39,14 @@ public class TasksController implements Initializable {
         addTaskBtn.setOnAction(e-> ViewFactory.openNewTaskWindow(treeView));
         deleteAccountBtn.setOnAction(e -> ViewFactory.openDeleteAccountStage());
         logOutBtn.setOnAction(e -> logOut());
-        tasks.setExpanded(true);
         showTasks();
         treeView.setRoot(tasks);
         treeView.setShowRoot(false);
         treeView.setCellFactory(e -> new TreeCellFactory());
         description.addListener((observable, oldValue, newValue) -> {
-            descriptionArea.setText(newValue);
+            descriptionLbl.setText(newValue);
         });
         treeView.setOnMouseClicked(null);
-
     }
 
     public static void showTasks() {
@@ -58,7 +56,6 @@ public class TasksController implements Initializable {
                 taskItem.getChildren().add(new TreeItem<>(subtask));
             }
             tasks.getChildren().add(taskItem);
-            taskItem.setExpanded(true);
         }
     }
 

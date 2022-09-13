@@ -51,12 +51,20 @@ public class TaskCellController implements Initializable {
         editBtn.setOnAction(e -> ViewFactory.openTaskEditWindow(task, this));
         root.getChildren().get(0).addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
 
-            System.out.println(event.getClickCount());
-            if (event.getClickCount() == 2 ){
+            if (event.getClickCount() == 2) {
 
                 //dodac aby otwieral sie poprawny task a nie wszyskie
-                treeView.getRoot().getChildren().forEach(child -> child.setExpanded(true));
-            };
+//                treeView.getRoot().getChildren().forEach(child -> child.setExpanded(true));
+
+
+                treeView.getRoot().getChildren().forEach(child -> {
+                    if (child.getValue() == task) {
+                        child.setExpanded(!child.isExpanded());
+
+                    }
+                });
+            }
+            ;
             TasksController.description.set(task.getDescription());
             event.consume();
 
@@ -71,7 +79,7 @@ public class TaskCellController implements Initializable {
         });
 
         addSubtaskBtn.setOnAction(e -> {
-            ViewFactory.openNewSubTaskWindow(treeView,task);
+            ViewFactory.openNewSubTaskWindow(treeView, task);
 
         });
     }

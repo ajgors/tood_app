@@ -10,3 +10,6 @@
 }
 
 
+.tooltip {
+    -fx-show-delay: 20ms;
+}

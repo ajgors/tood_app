@@ -38,3 +38,6 @@
     -fx-translate-x: -6;
     -fx-background-color: black;
 }
+.tooltip {
+    -fx-show-delay: 0ms;
+}
