@@ -18,6 +18,8 @@ public class Subtask  {
     private Long id;
     private String title;
     private String description;
+    private int done;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")

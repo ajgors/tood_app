@@ -29,7 +29,7 @@ public class EditSubtaskController implements Initializable {
                 toggle.setSelected(true);
             }
         });
-        titleFld.setText(subTaskCellController.getTaskTitleLbl().getText());
+        titleFld.setText(subtask.getTitle());
         description.setText(subtask.getDescription());
         applyBtn.setOnAction(e-> update());
 
@@ -37,7 +37,7 @@ public class EditSubtaskController implements Initializable {
     private void update() {
         String selectedPriority = ((ToggleButton)priority.getSelectedToggle()).getText();
 
-        subTaskCellController.getTaskTitleLbl().setText(titleFld.getText());
+        subTaskCellController.setTitle(titleFld.getText());
         subTaskCellController.setDescription(description.getText());
         subtask.setTitle(titleFld.getText());
         subtask.setPriority(selectedPriority);
@@ -45,5 +45,7 @@ public class EditSubtaskController implements Initializable {
         Dao.update(subtask);
         Stage stage = (Stage) applyBtn.getScene().getWindow();
         stage.close();
+        subTaskCellController.getTreeView().refresh();
+
     }
 }

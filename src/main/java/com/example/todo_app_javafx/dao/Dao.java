@@ -1,13 +1,16 @@
 package com.example.todo_app_javafx.dao;
 
 import jakarta.persistence.EntityTransaction;
+
 import java.util.List;
 import java.util.function.Consumer;
 
 import static com.example.todo_app_javafx.Main.entityManager;
 
 public class Dao {
-    protected Dao(){}
+    protected Dao() {
+    }
+
     public static <T> void inTransaction(Consumer<T> consumer, T entity) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
@@ -20,7 +23,7 @@ public class Dao {
     }
 
     public static void saveAll(Object... entities) {
-        for (Object entity :entities) {
+        for (Object entity : entities) {
             inTransaction(entityManager::persist, entity);
         }
     }
@@ -30,7 +33,11 @@ public class Dao {
     }
 
     public static void delete(Object entity) {
-        inTransaction(entityManager::remove, entity);
+        if (entityManager.contains(entity)) {
+            inTransaction(entityManager::remove, entity);
+
+        }
+
     }
 
     public static <T> T loadById(Class<T> clazz, Long id) {

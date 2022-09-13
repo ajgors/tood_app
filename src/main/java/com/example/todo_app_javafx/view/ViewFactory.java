@@ -15,7 +15,8 @@ import java.io.IOException;
 public class ViewFactory {
 
 
-    private ViewFactory(){}
+    private ViewFactory() {
+    }
 
     public static void getTasksWindow() {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Tasks.fxml"));
@@ -46,20 +47,22 @@ public class ViewFactory {
         stage.show();
     }
 
-    public static AnchorPane getRegisterView(){
+    public static AnchorPane getRegisterView() {
         try {
             return new FXMLLoader(Main.class.getResource("Register.fxml")).load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public static AnchorPane getLoginView(){
+
+    public static AnchorPane getLoginView() {
         try {
             return new FXMLLoader(Main.class.getResource("Login.fxml")).load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     public static void openSubtaskEditWindow(Subtask subtask, SubTaskCellController subTaskCellController) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Edit.fxml"));
         try {
@@ -78,6 +81,7 @@ public class ViewFactory {
             throw new RuntimeException("Error while opening new Window");
         }
     }
+
 
     public static void openTaskEditWindow(Task task, TaskCellController taskCellController) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Edit.fxml"));
@@ -116,10 +120,11 @@ public class ViewFactory {
             throw new RuntimeException("Error while opening new Window");
         }
     }
+
     public static void openNewSubTaskWindow(TreeView<Object> treeView, Task task) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NewTask.fxml"));
         try {
-            NewSubTaskController controller = new NewSubTaskController(treeView,task);
+            NewSubTaskController controller = new NewSubTaskController(treeView, task);
             fxmlLoader.setController(controller);
 
 //            NewTaskController newTaskController = new NewTaskController(treeView);

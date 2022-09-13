@@ -6,6 +6,7 @@ import com.example.todo_app_javafx.model.Task;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -28,6 +29,10 @@ public class NewTaskController implements Initializable {
         applyBtn.setOnAction(e-> createNewTask());
     }
     private void createNewTask(){
+        if(titleFld.getText().length() > 60){
+            System.out.println("Za długi tekst");
+            return;
+        }
         if (titleFld.getText().isEmpty()) {
             return;
         } else {

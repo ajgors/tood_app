@@ -5,6 +5,7 @@ import com.example.todo_app_javafx.model.Subtask;
 import com.example.todo_app_javafx.model.Task;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -25,7 +26,7 @@ public class EditTaskController implements Initializable {
         }
         @Override
         public void initialize(URL location, ResourceBundle resources) {
-            titleFld.setText(taskCellController.getTaskTitleLbl().getText());
+            titleFld.setText(task.getTitle());
             description.setText(task.getDescription());
 
 
@@ -40,7 +41,7 @@ public class EditTaskController implements Initializable {
         private void update() {
             String selectedPriority = ((ToggleButton)priority.getSelectedToggle()).getText();
 
-            taskCellController.getTaskTitleLbl().setText(titleFld.getText());
+            taskCellController.setTitle(titleFld.getText());
             taskCellController.setDescription(description.getText());
             task.setPriority(selectedPriority);
             task.setTitle(titleFld.getText());
@@ -48,6 +49,7 @@ public class EditTaskController implements Initializable {
             Dao.update(task);
             Stage stage = (Stage) applyBtn.getScene().getWindow();
             stage.close();
+            taskCellController.getTreeView().refresh();
         }
 
 }

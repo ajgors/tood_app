@@ -39,5 +39,6 @@
     -fx-background-color: black;
 }
 .tooltip {
-    -fx-show-delay: 0ms;
+    -fx-show-delay: 20ms;
+    -fx-background-color: #FFFFFF;
 }

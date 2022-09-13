@@ -1,6 +1,7 @@
 package com.example.todo_app_javafx.model;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,10 +17,12 @@ import java.util.List;
 @ToString
 
 public class Task {
+    @Setter(AccessLevel.NONE)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    @Column(length = 60)
     private String title;
     private String description;
     private int done;

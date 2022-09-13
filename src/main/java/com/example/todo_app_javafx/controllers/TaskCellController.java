@@ -2,22 +2,16 @@ package com.example.todo_app_javafx.controllers;
 
 import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.model.Model;
-import com.example.todo_app_javafx.model.Subtask;
 import com.example.todo_app_javafx.model.Task;
 import com.example.todo_app_javafx.view.ViewFactory;
-import javafx.event.Event;
-import javafx.event.EventDispatchChain;
-import javafx.event.EventDispatcher;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
-import javafx.scene.input.MouseButton;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,9 +25,16 @@ public class TaskCellController implements Initializable {
     private Label taskTitleLbl;
     @FXML
     private Button delete_btn;
+    @FXML
+    private CheckBox taskCheckbox;
     private String description;
     @FXML
     private Button addSubtaskBtn;
+    @FXML
+    @Setter(AccessLevel.NONE)
+    @Getter(AccessLevel.NONE)
+
+    private Text title;
     @FXML
     private AnchorPane root;
     @FXML
@@ -48,14 +49,10 @@ public class TaskCellController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        editBtn.setOnAction(e -> ViewFactory.openTaskEditWindow(task, this));
+        editBtn.setOnMouseClicked(e -> ViewFactory.openTaskEditWindow(task, this));
         root.getChildren().get(0).addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
 
             if (event.getClickCount() == 2) {
-
-                //dodac aby otwieral sie poprawny task a nie wszyskie
-//                treeView.getRoot().getChildren().forEach(child -> child.setExpanded(true));
-
 
                 treeView.getRoot().getChildren().forEach(child -> {
                     if (child.getValue() == task) {
@@ -64,14 +61,22 @@ public class TaskCellController implements Initializable {
                     }
                 });
             }
-            ;
             TasksController.description.set(task.getDescription());
             event.consume();
 
         });
 
+        Tooltip edit = new Tooltip("edit");
+        Tooltip addSubtask = new Tooltip("add subtask");
+        Tooltip delete = new Tooltip("delete");
+        edit.setShowDelay(Duration.millis(0));
+        addSubtask.setShowDelay(Duration.millis(0));
+        delete.setShowDelay(Duration.millis(0));
+        editBtn.setTooltip(edit);
+        delete_btn.setTooltip(delete);
+        addSubtaskBtn.setTooltip(addSubtask);
 
-        taskTitleLbl.setText(task.getTitle());
+
         delete_btn.setOnAction(e -> {
             treeView.getRoot().getChildren().removeIf(treeItem -> treeItem.getValue().equals(task));
             Model.getInstance().getUser().getTasks().remove(task);
@@ -82,6 +87,36 @@ public class TaskCellController implements Initializable {
             ViewFactory.openNewSubTaskWindow(treeView, task);
 
         });
+//        taskTitleLbl.setText(task.getTitle());
+
+        switch (task.getPriority()){
+            case "High" -> title.setStyle("-fx-fill: red");
+            case "Medium" -> title.setStyle("-fx-fill: orange");
+            case "Low" -> title.setStyle("-fx-fill: green");
+        };
+
+        title.setText(task.getTitle());
+
+        if(task.getDone() == 1){
+          title.setStrikethrough(true);
+          taskCheckbox.setSelected(true);
+        }
+        taskCheckbox.setOnAction(e -> {
+            if (taskCheckbox.isSelected()) {
+                title.setStrikethrough(true);
+                task.setDone(1);
+                task.getSubtasks().forEach(subtask -> subtask.setDone(1));
+
+            }else{
+                title.setStrikethrough(false);
+                task.setDone(0);
+            }
+                treeView.refresh();
+            Dao.update(task);
+        });
+    }
+    public void setTitle(String title) {
+        this.title.setText(title);
     }
 
 }

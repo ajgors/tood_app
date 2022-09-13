@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     public static final EntityManager entityManager = Persistence.createEntityManagerFactory("todo_app").createEntityManager();
+
     @Override
     public void start(Stage stage) {
         ViewFactory.openLoginStage();
