@@ -15,7 +15,7 @@ public class UserDao extends Dao {
         return user;
     }
 
-    public static User getUserByLoginAndPassowrd(String login, String password){
+    public static User getUserByLoginAndPassword(String login, String password){
         User user = null;
         try{
             user = entityManager.createQuery("FROM User WHERE login= :login AND password= :password", User.class)

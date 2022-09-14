@@ -20,6 +20,8 @@ import java.io.IOException;
 public class ViewFactory {
 
 
+    private static final String errorMessage = "error while opening new window";
+
     private ViewFactory() {
     }
 
@@ -73,17 +75,9 @@ public class ViewFactory {
         try {
             EditSubtaskController editController = new EditSubtaskController(subtask, subTaskCellController);
             fxmlLoader.setController(editController);
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setAlwaysOnTop(true);
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.initOwner();
-            stage.setResizable(false);
-            stage.show();
+            setStageForSmallStages(fxmlLoader);
         } catch (IOException e) {
-            throw new RuntimeException("Error while opening new Window");
+            throw new RuntimeException(errorMessage);
         }
     }
 
@@ -93,18 +87,20 @@ public class ViewFactory {
         try {
             EditTaskController editController = new EditTaskController(task, taskCellController);
             fxmlLoader.setController(editController);
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setAlwaysOnTop(true);
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.initOwner();
-            stage.setResizable(false);
-            stage.show();
+            setStageForSmallStages(fxmlLoader);
         } catch (IOException e) {
-            throw new RuntimeException("Error while opening new Window");
+            throw new RuntimeException(errorMessage);
         }
+    }
+
+    private static void setStageForSmallStages(FXMLLoader fxmlLoader) throws IOException {
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setAlwaysOnTop(true);
+        stage.setResizable(false);
+        stage.show();
     }
 
     public static void openNewTaskWindow(TreeView<Object> treeView) {
@@ -112,17 +108,9 @@ public class ViewFactory {
         try {
             NewTaskController newTaskController = new NewTaskController(treeView);
             fxmlLoader.setController(newTaskController);
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setAlwaysOnTop(true);
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.initOwner();
-            stage.setResizable(false);
-            stage.show();
+            setStageForSmallStages(fxmlLoader);
         } catch (IOException e) {
-            throw new RuntimeException("Error while opening new Window");
+            throw new RuntimeException(errorMessage);
         }
     }
 
@@ -131,20 +119,9 @@ public class ViewFactory {
         try {
             NewSubtaskController controller = new NewSubtaskController(treeView, task);
             fxmlLoader.setController(controller);
-
-//            NewTaskController newTaskController = new NewTaskController(treeView);
-//            fxmlLoader.setController(newTaskController);
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setAlwaysOnTop(true);
-//            stage.initModality(Modality.WINDOW_MODAL);
-//            stage.initOwner();
-            stage.setResizable(false);
-            stage.show();
+            setStageForSmallStages(fxmlLoader);
         } catch (IOException e) {
-            throw new RuntimeException("Error while opening new Window");
+            throw new RuntimeException(errorMessage);
         }
     }
 }

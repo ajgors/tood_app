@@ -3,6 +3,7 @@ package com.example.todo_app_javafx.controllers.edit;
 import com.example.todo_app_javafx.controllers.cell.TaskCellController;
 import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.model.Task;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -11,12 +12,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EditTaskController implements Initializable {
-    public TextField titleFld;
-    public TextArea description;
-    public Button applyBtn;
-    private Task task;
-    private TaskCellController taskCellController;
-    public ToggleGroup priority;
+    @FXML
+    private TextField titleFld;
+    @FXML
+    private TextArea description;
+    @FXML
+    private Button applyBtn;
+    @FXML
+    private ToggleGroup priority;
+    private final Task task;
+    private final TaskCellController taskCellController;
 
 
     public EditTaskController(Task task, TaskCellController taskCellController) {

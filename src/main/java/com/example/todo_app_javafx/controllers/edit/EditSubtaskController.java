@@ -3,6 +3,7 @@ package com.example.todo_app_javafx.controllers.edit;
 import com.example.todo_app_javafx.controllers.cell.SubtaskCellController;
 import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.model.Subtask;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -11,12 +12,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EditSubtaskController implements Initializable {
+    @FXML
     public TextField titleFld;
+    @FXML
     public TextArea description;
+    @FXML
     public Button applyBtn;
-    private Subtask subtask;
-    private SubtaskCellController subTaskCellController;
+    @FXML
     public ToggleGroup priority;
+    private final Subtask subtask;
+    private final SubtaskCellController subTaskCellController;
 
 
     public EditSubtaskController(Subtask subtask, SubtaskCellController subTaskCellController){

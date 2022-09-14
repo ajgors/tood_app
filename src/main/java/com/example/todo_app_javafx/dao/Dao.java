@@ -2,7 +2,6 @@ package com.example.todo_app_javafx.dao;
 
 import jakarta.persistence.EntityTransaction;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 import static com.example.todo_app_javafx.Main.entityManager;
@@ -22,11 +21,6 @@ public class Dao {
         inTransaction(entityManager::persist, entity);
     }
 
-    public static void saveAll(Object... entities) {
-        for (Object entity : entities) {
-            inTransaction(entityManager::persist, entity);
-        }
-    }
 
     public static void update(Object entity) {
         inTransaction(entityManager::merge, entity);
@@ -40,16 +34,6 @@ public class Dao {
 
     }
 
-    public static <T> T loadById(Class<T> clazz, Long id) {
-        return entityManager.find(clazz, id);
-    }
-
-    public static <T> List<T> loadAll(Class<T> clazz) {
-
-        return entityManager.
-                createQuery("from " + clazz.getSimpleName(),
-                        clazz).getResultList();
-    }
 
 
 }

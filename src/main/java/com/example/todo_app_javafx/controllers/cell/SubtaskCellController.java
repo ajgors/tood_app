@@ -86,9 +86,9 @@ public class SubtaskCellController implements Initializable {
         switch (subtask.getPriority()){
             case "High" -> title.setStyle("-fx-fill: red");
             case "Medium" -> title.setStyle("-fx-fill: orange");
-            case "Low" -> title.setStyle("-fx-fill: green");
+            default -> title.setStyle("-fx-fill: green");
+
         }
-        ;
     }
 
     private void setTooltips() {

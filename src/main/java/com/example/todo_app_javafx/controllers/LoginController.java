@@ -38,8 +38,8 @@ public class LoginController implements Initializable {
         String userTypedLoginOrEmail = loginEmailFld.getText();
         String userTypedPassword = passwordFld.getText();
 
-        if (UserDao.getUserByLoginAndPassowrd(userTypedLoginOrEmail, userTypedPassword) != null) {
-            Model.getInstance().setUser(UserDao.getUserByLoginAndPassowrd(userTypedLoginOrEmail, userTypedPassword));
+        if (UserDao.getUserByLoginAndPassword(userTypedLoginOrEmail, userTypedPassword) != null) {
+            Model.getInstance().setUser(UserDao.getUserByLoginAndPassword(userTypedLoginOrEmail, userTypedPassword));
             ViewFactory.getTasksWindow();
             closeCurrentStage();
         } else {

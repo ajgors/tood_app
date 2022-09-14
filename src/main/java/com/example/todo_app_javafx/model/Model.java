@@ -1,6 +1,5 @@
 package com.example.todo_app_javafx.model;
 
-import javafx.scene.control.TreeItem;
 import lombok.Getter;
 import lombok.Setter;
 

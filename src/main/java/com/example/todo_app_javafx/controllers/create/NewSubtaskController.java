@@ -6,7 +6,6 @@ import com.example.todo_app_javafx.model.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -14,8 +13,7 @@ import java.util.ResourceBundle;
 
 public class NewSubtaskController implements Initializable {
 
-    @FXML
-    private AnchorPane root;
+
     @FXML
     private TextField titleFld;
     @FXML
@@ -27,8 +25,8 @@ public class NewSubtaskController implements Initializable {
     @FXML
     private Label mainLabel;
 
-    private TreeView<Object> treeView;
-    private Task task;
+    private final TreeView<Object> treeView;
+    private final Task task;
 
     public NewSubtaskController(TreeView<Object> treeView, Task task) {
         this.task = task;

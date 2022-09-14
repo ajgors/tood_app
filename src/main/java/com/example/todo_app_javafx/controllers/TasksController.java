@@ -8,7 +8,6 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -27,7 +26,7 @@ public class TasksController implements Initializable {
     @FXML
     private Button deleteAccountBtn;
 
-    public static StringProperty description = new SimpleStringProperty();
+    public static final StringProperty description = new SimpleStringProperty();
 
     private static final TreeItem<Object> tasks = new TreeItem<>(null);
 
@@ -37,12 +36,12 @@ public class TasksController implements Initializable {
         deleteAccountBtn.setOnAction(e -> ViewFactory.openDeleteAccountStage());
         logOutBtn.setOnAction(e -> logOut());
         description.addListener((observable, oldValue, newValue) -> descriptionLbl.setText(newValue));
-        prepateTreeView();
+        prepareTreeView();
         treeView.getRoot().getChildren().clear();
         showTasks();
     }
 
-    private void prepateTreeView() {
+    private void prepareTreeView() {
         treeView.setRoot(tasks);
         treeView.setShowRoot(false);
         treeView.setCellFactory(e -> new TreeCellFactory());
