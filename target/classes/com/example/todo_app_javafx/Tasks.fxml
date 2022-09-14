@@ -10,53 +10,51 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" prefHeight="705.0" prefWidth="600.0" style="-fx-background-color: #EEE;" stylesheets="@Tasks.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.todo_app_javafx.controllers.TasksController">
-    <children>
-      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <HBox alignment="CENTER" layoutY="58.0" prefHeight="42.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-              <Label alignment="CENTER" text="Todo list">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Button fx:id="addTaskBtn" mnemonicParsing="false" text="Add Task" />
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-               <children>
-                  <TreeView fx:id="treeView" prefWidth="600.0" styleClass="myTree">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </TreeView>
-               </children>
-               <VBox.margin>
-                  <Insets left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Text>
-            <Label fx:id="descriptionLbl">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="410.0" spacing="20.0">
-               <children>
-                  <Button fx:id="logOutBtn" mnemonicParsing="false" text="Log out" />
-                  <Button fx:id="deleteAccountBtn" mnemonicParsing="false" text="Delete account" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-    </children>
+<AnchorPane fx:id="root" prefHeight="705.0" prefWidth="600.0" style="-fx-background-color: #EEE;"
+            stylesheets="@Tasks.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/"
+            fx:controller="com.example.todo_app_javafx.controllers.TasksController">
+    <HBox alignment="CENTER" prefHeight="40.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+    <HBox alignment="CENTER" layoutY="58.0" prefHeight="42.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0"/>
+    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label alignment="CENTER" text="Todo list">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <VBox.margin>
+                <Insets bottom="10.0" top="10.0"/>
+            </VBox.margin>
+        </Label>
+        <Button fx:id="addTaskBtn" mnemonicParsing="false" text="Add Task"/>
+        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+              VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets left="10.0" right="10.0" top="10.0"/>
+            </VBox.margin>
+            <TreeView fx:id="treeView" prefWidth="600.0" styleClass="myTree">
+                <HBox.margin>
+                    <Insets/>
+                </HBox.margin>
+            </TreeView>
+        </HBox>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+            <font>
+                <Font size="14.0"/>
+            </font>
+            <VBox.margin>
+                <Insets top="10.0"/>
+            </VBox.margin>
+        </Text>
+        <Label fx:id="descriptionLbl">
+            <font>
+                <Font size="13.0"/>
+            </font>
+        </Label>
+        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="410.0" spacing="20.0">
+            <Button fx:id="logOutBtn" mnemonicParsing="false" text="Log out"/>
+            <Button fx:id="deleteAccountBtn" mnemonicParsing="false" text="Delete account"/>
+        </HBox>
+    </VBox>
 </AnchorPane>

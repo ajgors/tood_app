@@ -1,5 +1,6 @@
 package com.example.todo_app_javafx.model;
 
+import javafx.scene.control.TreeItem;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,8 @@ import lombok.Setter;
 public class Model {
     private User user;
     private static Model instance;
+
+
 
     public static synchronized Model getInstance(){
         if(instance == null){

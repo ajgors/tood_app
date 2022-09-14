@@ -8,14 +8,14 @@ public class UserDao extends Dao {
     public static User loadByLogin(String login){
         User user = null;
         try{
-            user = entityManager.createQuery("FROM User WHERE login= :login", User.class)
+            user = entityManager.createQuery("FROM User WHERE login=:login", User.class)
                     .setParameter("login", login)
                     .getSingleResult();
         }catch (Exception ignored){}
         return user;
     }
 
-    public static User login(String login, String password){
+    public static User getUserByLoginAndPassowrd(String login, String password){
         User user = null;
         try{
             user = entityManager.createQuery("FROM User WHERE login= :login AND password= :password", User.class)

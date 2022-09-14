@@ -1,7 +1,12 @@
 package com.example.todo_app_javafx.view;
 
-import com.example.todo_app_javafx.controllers.*;
 import com.example.todo_app_javafx.Main;
+import com.example.todo_app_javafx.controllers.cell.SubtaskCellController;
+import com.example.todo_app_javafx.controllers.cell.TaskCellController;
+import com.example.todo_app_javafx.controllers.create.NewSubtaskController;
+import com.example.todo_app_javafx.controllers.create.NewTaskController;
+import com.example.todo_app_javafx.controllers.edit.EditSubtaskController;
+import com.example.todo_app_javafx.controllers.edit.EditTaskController;
 import com.example.todo_app_javafx.model.Subtask;
 import com.example.todo_app_javafx.model.Task;
 import javafx.fxml.FXMLLoader;
@@ -63,7 +68,7 @@ public class ViewFactory {
         }
     }
 
-    public static void openSubtaskEditWindow(Subtask subtask, SubTaskCellController subTaskCellController) {
+    public static void openSubtaskEditWindow(Subtask subtask, SubtaskCellController subTaskCellController) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Edit.fxml"));
         try {
             EditSubtaskController editController = new EditSubtaskController(subtask, subTaskCellController);
@@ -124,7 +129,7 @@ public class ViewFactory {
     public static void openNewSubTaskWindow(TreeView<Object> treeView, Task task) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("NewTask.fxml"));
         try {
-            NewSubTaskController controller = new NewSubTaskController(treeView, task);
+            NewSubtaskController controller = new NewSubtaskController(treeView, task);
             fxmlLoader.setController(controller);
 
 //            NewTaskController newTaskController = new NewTaskController(treeView);

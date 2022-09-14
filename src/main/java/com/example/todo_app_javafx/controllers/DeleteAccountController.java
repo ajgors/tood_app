@@ -45,6 +45,7 @@ public class DeleteAccountController implements Initializable {
     private void removeAccount(){
         if (passwordFld.getText().equals(repeatedPasswordFld.getText()) && passwordFld.getText().equals(Model.getInstance().getUser().getPassword())){
             Dao.delete(Model.getInstance().getUser());
+            Model.getInstance().setUser(null);
             closeDeleteAccountWindow();
             closeTasksWindow();
         }

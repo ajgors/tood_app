@@ -38,19 +38,36 @@ public class RegisterController implements Initializable {
         registerBtn.setOnAction(e -> userCreation());
     }
 
-    private void userCreation(){
-            if(UserDao.loadByLogin(loginFld.getText()) == null){
-                User user = new User(nameFld.getText(), surnameFld.getText(), loginFld.getText(), passwordFld.getText(), emailFld.getText());
-                Dao.save(user);
-                root.getChildren().setAll(ViewFactory.getLoginView());
-            }else{
-                loginExistsAlert();
-            }
+    private void userCreation() {
+        if (areFieldsEmpty()) {
+            showAlert("please fill all fields");
+            return;
+        }
+        if (checkIfLoginExists()) {
+            showAlert("login already exists");
+            return;
+        }
+
+        User user = new User(nameFld.getText(), surnameFld.getText(),
+                loginFld.getText(), passwordFld.getText(), emailFld.getText());
+        Dao.save(user);
+        root.getScene().setRoot(ViewFactory.getLoginView());
     }
 
-    private void loginExistsAlert(){
+    private boolean checkIfLoginExists() {
+        return UserDao.loadByLogin(loginFld.getText()) != null;
+    }
+
+    public boolean areFieldsEmpty() {
+        return emailFld.getText().isEmpty() ||
+                nameFld.getText().isEmpty() ||
+                surnameFld.getText().isEmpty() ||
+                loginFld.getText().isEmpty();
+    }
+
+    private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText("This login exists");
+        alert.setContentText(message);
         alert.show();
     }
 }

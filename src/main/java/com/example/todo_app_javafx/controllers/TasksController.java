@@ -1,6 +1,5 @@
 package com.example.todo_app_javafx.controllers;
 
-import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.model.*;
 import com.example.todo_app_javafx.view.TreeCellFactory;
 import com.example.todo_app_javafx.view.ViewFactory;
@@ -9,7 +8,7 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -21,8 +20,6 @@ public class TasksController implements Initializable {
     private Label descriptionLbl;
     @FXML
     private TreeView<Object> treeView;
-    @FXML
-    private TextField newTaskTitleFld;
     @FXML
     private Button addTaskBtn;
     @FXML
@@ -39,16 +36,18 @@ public class TasksController implements Initializable {
         addTaskBtn.setOnAction(e-> ViewFactory.openNewTaskWindow(treeView));
         deleteAccountBtn.setOnAction(e -> ViewFactory.openDeleteAccountStage());
         logOutBtn.setOnAction(e -> logOut());
+        description.addListener((observable, oldValue, newValue) -> descriptionLbl.setText(newValue));
+        prepateTreeView();
+        treeView.getRoot().getChildren().clear();
         showTasks();
+    }
+
+    private void prepateTreeView() {
         treeView.setRoot(tasks);
         treeView.setShowRoot(false);
         treeView.setCellFactory(e -> new TreeCellFactory());
-        description.addListener((observable, oldValue, newValue) -> {
-            descriptionLbl.setText(newValue);
-        });
         treeView.setOnMouseClicked(null);
     }
-
     public static void showTasks() {
         for (Task task : Model.getInstance().getUser().getTasks()) {
             TreeItem<Object> taskItem = new TreeItem<>(task);
@@ -59,7 +58,6 @@ public class TasksController implements Initializable {
         }
     }
 
-
     private void logOut() {
         treeView.getRoot().getChildren().clear();
         Model.getInstance().setUser(null);
@@ -67,7 +65,5 @@ public class TasksController implements Initializable {
         stage.close();
         ViewFactory.openLoginStage();
     }
-
-
 
 }

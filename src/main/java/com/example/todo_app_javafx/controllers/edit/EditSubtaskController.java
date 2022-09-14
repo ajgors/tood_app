@@ -1,5 +1,6 @@
-package com.example.todo_app_javafx.controllers;
+package com.example.todo_app_javafx.controllers.edit;
 
+import com.example.todo_app_javafx.controllers.cell.SubtaskCellController;
 import com.example.todo_app_javafx.dao.Dao;
 import com.example.todo_app_javafx.model.Subtask;
 import javafx.fxml.Initializable;
@@ -14,11 +15,11 @@ public class EditSubtaskController implements Initializable {
     public TextArea description;
     public Button applyBtn;
     private Subtask subtask;
-    private SubTaskCellController subTaskCellController;
+    private SubtaskCellController subTaskCellController;
     public ToggleGroup priority;
 
 
-    public EditSubtaskController(Subtask subtask, SubTaskCellController subTaskCellController){
+    public EditSubtaskController(Subtask subtask, SubtaskCellController subTaskCellController){
         this.subTaskCellController = subTaskCellController;
         this.subtask = subtask;
     }

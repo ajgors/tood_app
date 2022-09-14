@@ -31,15 +31,15 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loginBtn.setOnAction(e -> onLoginButtonClick());
-        createNewAccountBtn.setOnAction(e -> root.getChildren().setAll(ViewFactory.getRegisterView()));
+        createNewAccountBtn.setOnAction(e -> root.getScene().setRoot(ViewFactory.getRegisterView()));
     }
 
     private void onLoginButtonClick() {
         String userTypedLoginOrEmail = loginEmailFld.getText();
         String userTypedPassword = passwordFld.getText();
 
-        if (UserDao.login(userTypedLoginOrEmail, userTypedPassword) != null) {
-            Model.getInstance().setUser(UserDao.login(userTypedLoginOrEmail, userTypedPassword));
+        if (UserDao.getUserByLoginAndPassowrd(userTypedLoginOrEmail, userTypedPassword) != null) {
+            Model.getInstance().setUser(UserDao.getUserByLoginAndPassowrd(userTypedLoginOrEmail, userTypedPassword));
             ViewFactory.getTasksWindow();
             closeCurrentStage();
         } else {

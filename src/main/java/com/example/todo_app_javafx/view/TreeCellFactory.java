@@ -1,8 +1,8 @@
 package com.example.todo_app_javafx.view;
 
 import com.example.todo_app_javafx.Main;
-import com.example.todo_app_javafx.controllers.SubTaskCellController;
-import com.example.todo_app_javafx.controllers.TaskCellController;
+import com.example.todo_app_javafx.controllers.cell.SubtaskCellController;
+import com.example.todo_app_javafx.controllers.cell.TaskCellController;
 import com.example.todo_app_javafx.model.Subtask;
 import com.example.todo_app_javafx.model.Task;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +29,7 @@ public class TreeCellFactory extends TreeCell<Object> {
                 }
             }else if(item instanceof Subtask subtask){
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("SubTaskCell.fxml"));
-                SubTaskCellController controller = new SubTaskCellController(subtask, getTreeView());
+                SubtaskCellController controller = new SubtaskCellController(subtask, getTreeView());
                 loader.setController(controller);
                 try {
                     setGraphic(loader.load());
