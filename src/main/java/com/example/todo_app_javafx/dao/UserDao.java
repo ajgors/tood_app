@@ -2,7 +2,7 @@ package com.example.todo_app_javafx.dao;
 
 import com.example.todo_app_javafx.model.User;
 
-import static com.example.todo_app_javafx.Main.entityManager;
+import static com.example.todo_app_javafx.model.ConnectToDb.entityManager;
 
 public class UserDao extends Dao {
     public static User loadByLogin(String login){

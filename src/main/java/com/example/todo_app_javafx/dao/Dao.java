@@ -4,7 +4,7 @@ import jakarta.persistence.EntityTransaction;
 
 import java.util.function.Consumer;
 
-import static com.example.todo_app_javafx.Main.entityManager;
+import static com.example.todo_app_javafx.model.ConnectToDb.entityManager;
 
 public class Dao {
     protected Dao() {
