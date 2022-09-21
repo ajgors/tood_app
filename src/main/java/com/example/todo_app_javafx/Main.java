@@ -10,13 +10,18 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) {
-
-        ViewFactory.openLoginStage();
+    public void init() throws Exception {
+        super.init();
         ConnectToDb connectToDb = new ConnectToDb();
         Thread thread = new Thread(connectToDb);
         thread.setDaemon(true);
         thread.start();
+    }
+
+    @Override
+    public void start(Stage stage) {
+
+        ViewFactory.openLoginStage();
     }
 
     public static void main(String[] args) {
