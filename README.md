@@ -3,7 +3,7 @@
 
 Simple todo app written in JavaFX and Hibernate.
 
-![My Image](pic/app.png)
+<img alt="My Image" src="pic/app.png" width="320"/>
 
 ## Tech Stack
 
